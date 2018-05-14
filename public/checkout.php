@@ -22,16 +22,18 @@ $customerCreate = $gateway->customer()->create([
       $_SESSION["error"] = $customerCreate->message;
       header("Location: index.php");
     }
+    
+if ($token) {
+    $transactionSale = $gateway->transaction()->sale([
+        'amount' => $amount,
+        'paymentMethodToken' => $token
+    ]);
 
-$transactionSale = $gateway->transaction()->sale([
-    'amount' => $amount,
-    'paymentMethodToken' => $token
-]);
-
-if ($transactionSale->success) {
-    $transaction = $transactionSale->transaction;
-    header("Location: results.php?id=" . $transaction->id);
-} else {
-    $_SESSION["error"] = $transactionSale->message;
-    header("Location: index.php");
+    if ($transactionSale->success) {
+        $transaction = $transactionSale->transaction;
+        header("Location: results.php?id=" . $transaction->id);
+    } else {
+        $_SESSION["error"] = $transactionSale->message;
+        header("Location: index.php");
+    }
 }

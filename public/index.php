@@ -61,74 +61,74 @@ require_once("../templates/braintree_init.php");
     </div>
 
     <script>
-      var form = document.querySelector('#payment-form');
-      var submit = document.querySelector('input[type="submit"]');
-      var tokenizeCardholderName = document.querySelector('input[name="cardholder_name"]');
-      var client_token = "<?php echo($gateway->ClientToken()->generate()); ?>";
+      $(document).ready(function() {
+        var form = document.querySelector('#payment-form');
+        var submit = document.querySelector('input[type="submit"]');
+        var tokenizeCardholderName = document.querySelector('input[name="cardholder_name"]');
+        var client_token = "<?php echo($gateway->ClientToken()->generate()); ?>";
 
-      braintree.client.create({
-        authorization: client_token
-      }, function (clientErr, clientInstance) {
-        if (clientErr) {
-          console.error(clientErr);
-          return;
-        }
-
-        braintree.hostedFields.create({
-          client: clientInstance,
-          styles: {
-            'input': {
-              'font-size': '14px'
-            },
-            'input.invalid': {
-              'color': 'red'
-            },
-            'input.valid': {
-              'color': 'green'
-            }
-          },
-          fields: {
-            number: {
-              selector: '#card-number',
-              placeholder: '4111 1111 1111 1111'
-            },
-            cvv: {
-              selector: '#cvv',
-              placeholder: '123'
-            },
-            expirationDate: {
-              selector: '#expiration-date',
-              placeholder: '02/20'
-            },
-            postalCode: {
-              selector: '#postal-code',
-              placeholder: '12345'
-            }
-          }
-        }, function (hostedFieldsErr, hostedFieldsInstance) {
-          if (hostedFieldsErr) {
-            console.error(hostedFieldsErr);
+        braintree.client.create({
+          authorization: client_token
+        }, function (clientErr, clientInstance) {
+          if (clientErr) {
+            console.error(clientErr);
             return;
           }
 
-          submit.removeAttribute('disabled');
-
-          form.addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            hostedFieldsInstance.tokenize({
-              cardholderName: tokenizeCardholderName.value,
-            }, function (tokenizeErr, payload) {
-              if (tokenizeErr) {
-                console.error(tokenizeErr);
-                return;
+          braintree.hostedFields.create({
+            client: clientInstance,
+            styles: {
+              'input': {
+                'font-size': '14px'
+              },
+              'input.invalid': {
+                'color': 'red'
+              },
+              'input.valid': {
+                'color': 'green'
               }
-              // If needed, use this to test nonce creation
-              // console.log('Got a nonce: ' + payload.nonce);
-              document.querySelector('input[name="payment_method_nonce"]').value = payload.nonce;
-              form.submit();
-            });
-          }, false);
+            },
+            fields: {
+              number: {
+                selector: '#card-number',
+                placeholder: '4111 1111 1111 1111'
+              },
+              cvv: {
+                selector: '#cvv',
+                placeholder: '123'
+              },
+              expirationDate: {
+                selector: '#expiration-date',
+                placeholder: '02/20'
+              },
+              postalCode: {
+                selector: '#postal-code',
+                placeholder: '12345'
+              }
+            }
+          }, function (hostedFieldsErr, hostedFieldsInstance) {
+            if (hostedFieldsErr) {
+              console.error(hostedFieldsErr);
+              return;
+            }
+
+            submit.removeAttribute('disabled');
+
+            form.addEventListener('submit', function (event) {
+              event.preventDefault();
+
+              hostedFieldsInstance.tokenize({
+                cardholderName: tokenizeCardholderName.value,
+              }, function (tokenizeErr, payload) {
+                if (tokenizeErr) {
+                  console.error(tokenizeErr);
+                  return;
+                }
+                document.querySelector('input[name="payment_method_nonce"]').value = payload.nonce;
+                form.submit();
+              });
+            }, false);
+          });
         });
       });
     </script>
