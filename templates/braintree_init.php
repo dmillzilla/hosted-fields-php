@@ -7,8 +7,8 @@ if(file_exists(__DIR__ . "../.env")) {
 }
 
 $gateway = new Braintree\Gateway([
-    'environment' => getenv('BT_ENVIRONMENT'),
-    'merchantId' => getenv('BT_MERCHANT_ID'),
-    'publicKey' => getenv('BT_PUBLIC_KEY'),
-    'privateKey' => getenv('BT_PRIVATE_KEY')
+    'environment' => getenv('BRAINTREE_ENVIRONMENT'),
+    'merchantId' => getenv('BRAINTREE_MERCHANT_ID'),
+    'publicKey' => getenv('BRAINTREE_PUBLIC_KEY'),
+    'privateKey' => getenv('BRAINTREE_PRIVATE_KEY')
 ]);
