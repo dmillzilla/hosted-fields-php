@@ -1,0 +1,34 @@
+#logo {
+  float: left;
+  font-size: 1.7em;
+  // color: #9933ff;
+  color: red;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+#logo:hover {
+  color: #a15ce6;
+  text-decoration: none;
+}
+
+.panel > .panel-heading {
+  background-image: none;
+  background-color: black !important;
+  color: white !important;
+}
+
+.btn-default, .btn-default:active, .btn-default:visited {
+  background-color: black !important;
+  color: white !important;
+}
+
+.btn-default:hover {
+  background-color: #1a1515 !important;
+  color: #e8e8e3 !important;
+}
+
+.table {
+  width: 100%;
+}
