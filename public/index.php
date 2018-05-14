@@ -6,14 +6,11 @@ require_once("../templates/braintree_init.php");
 <html>
 <?php require_once("../templates/base.html.twig"); ?>
 <body>
-
     <?php require_once("../templates/nav.php"); ?>
-    <div class="container">
-      <script language="Javascript"></script>
 
+    <div class="container">
       <h1 align="center">(ʃƪ¬‿¬) Join Supervillain University today (¬‿¬ʃƪ)</h4>
       <h2 align="center"><small>The best bootcamp to teach you how to take over the world in 6 easy steps.</small></h4><hr>
-
       <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-default">
           <div class="panel-heading text-center">
@@ -29,7 +26,6 @@ require_once("../templates/braintree_init.php");
                 <label for="email">Email</label>
                 <input class="form-control" type="email" name="email" placeholder="Email">
               </div>
-
               <div class="form-group col-md-12">
                 <label for="card-number">Card Number</label>
                 <div id="card-number" class="form-control"></div>
