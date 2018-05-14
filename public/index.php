@@ -1,6 +1,6 @@
 <?php
-session_start();
-require_once("../templates/braintree_init.php");
+    session_start();
+    require_once("../templates/braintree_init.php");
 ?>
 
 <html>

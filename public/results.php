@@ -10,11 +10,10 @@
 
   <div class="container">
     <div align="center">
-      <h1><div class="col-md-4">✧*｡٩(ˊᗜˋ*)و✧*｡</div><div class="col-md-4"> You Did It </div><div class="col-md-4">✧*｡٩(ˊᗜˋ*)و✧*｡</div></h1>
+      <h1><div class="col-md-4">✧*｡٩(ˊᗜˋ*)و✧*｡</div><div class="col-md-4"> You Did It </div><div class="col-md-4">✧*｡٩(ˊᗜˋ*)و✧*｡</div></h1><br />
       <h2><small>We'll totally definitely be reaching out shortly with the details of how take over the world. We promise!</small></h4>
     </div>
     <hr>
-
     <div class="col-md-12">
       <h1 class="col-md-6 col-md-offset-3"><small>Transaction</small></h1>
       <div class="col-md-6 col-md-offset-3">
@@ -26,7 +25,7 @@
             </tr>
             <tr>
               <th>Amount</th>
-              <td class="text-right">$<?php echo($transaction->amount) ?> <? $transaction.currencyIsoCode ?></td>
+              <td class="text-right">$<?php echo($transaction->amount) . " " . $transaction->currencyIsoCode ?></td>
             </tr>
             <tr>
               <th>Status</th>
@@ -36,7 +35,6 @@
         </table>
       </div>
     </div>
-
     <div class="col-md-12">
       <h1 class="col-md-6 col-md-offset-3"><small>Customer</small></h1>
       <div class="col-md-6 col-md-offset-3">
@@ -88,7 +86,5 @@
       </div>
     </div>
   </div>
-
-
 </body>
 </html>

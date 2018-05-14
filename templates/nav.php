@@ -13,8 +13,8 @@
         <div class="alert alert-danger">
           <a href="#" class="close" data-dismiss="alert">&#215;</a>
           <?php
-            echo($_SESSION["error"]);
-            unset($_SESSION["error"]);
+              echo($_SESSION["error"]);
+              unset($_SESSION["error"]);
           ?>
         </div>
       <?php endif; ?>
