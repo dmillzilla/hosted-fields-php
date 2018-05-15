@@ -6,7 +6,7 @@ if(file_exists(__DIR__ . "../.env")) {
     $dotenv->load();
 }
 
-$gateway = new Braintree\Gateway([
+$gateway = new Braintree_Gateway([
     'environment' => getenv('BRAINTREE_ENVIRONMENT'),
     'merchantId' => getenv('BRAINTREE_MERCHANT_ID'),
     'publicKey' => getenv('BRAINTREE_PUBLIC_KEY'),

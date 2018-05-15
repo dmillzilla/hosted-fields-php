@@ -22,7 +22,7 @@ $customerCreate = $gateway->customer()->create([
       $_SESSION["error"] = $customerCreate->message;
       header("Location: index.php");
     }
-    
+
 if ($token) {
     $transactionSale = $gateway->transaction()->sale([
         'amount' => $amount,

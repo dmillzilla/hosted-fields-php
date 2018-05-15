@@ -1,7 +1,6 @@
 <html>
 <?php require_once("../templates/base.html.twig"); ?>
 <body>
-
   <?php
       require_once("../templates/braintree_init.php");
       require_once("../templates/nav.php");
